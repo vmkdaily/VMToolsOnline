@@ -119,4 +119,11 @@ NOTES
     This example returns the default comments available on the official tools site.
     It contains helpful information about versioning, releases, etc.
 
+    -------------------------- EXAMPLE 4 --------------------------
+
+    PS C:\>Get-VMToolsOnline -Raw
+
+    Returns the original content with native formatting.  This is the same thing you would see
+    if you navigated to https://packages.vmware.com/tools/versions using a browser.
+    
 ```
