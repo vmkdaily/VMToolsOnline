@@ -1,3 +1,11 @@
+#### Getting Started
+Dowload the module to the desired local directory and then import similar to:
+Import-Module c:\mods\VMToolsOnline
+
+#### Included Function
+This module currently only includes one function, Get-VMToolsOnline.
+The following is the related help output.
+
 ```
 NAME
     Get-VMToolsOnline
