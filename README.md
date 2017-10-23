@@ -1,3 +1,4 @@
+```
 NAME
     Get-VMToolsOnline
 
@@ -110,4 +111,4 @@ NOTES
     This example returns the default comments available on the official tools site.
     It contains helpful information about versioning, releases, etc.
 
-
+```
