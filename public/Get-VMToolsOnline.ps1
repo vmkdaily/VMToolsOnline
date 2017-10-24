@@ -4,11 +4,11 @@ Function Get-VMToolsOnline {
   <#
       .SYNOPSIS
         Uses Powershell webcmdlets to connect to vmware.com and get a list of all
-        VMware Tools versions along with supporting infgormation.
+        VMware Tools versions along with supporting information.
 
       .DESCRIPTION
         Uses Powershell webcmdlets to connect to vmware.com and get a list of all
-        VMware Tools versions along with supporting infgormation.  Also includes
+        VMware Tools versions along with supporting information.  Also includes
         a derived property for RSS showing if a given Tools version is affected.
 
         All version information is obtained live from the internet, while the RSS
@@ -27,7 +27,7 @@ Function Get-VMToolsOnline {
       Get-VMToolsOnline
 
       This example runs the script with no parameters.  By default you will get a
-      report of all available VMware Tools versions on your screen. WE maintain the
+      report of all available VMware Tools versions on your screen. We maintain the
       original formatting where possible.  To use the data as objects see the PassThru
       parameter in the next example.
 
