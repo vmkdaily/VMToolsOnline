@@ -1,5 +1,5 @@
 #### Getting Started
-Dowload the module to the desired local directory and then import similar to:
+Download the module to the desired local directory and then import similar to:
 
 ```
 Import-Module c:\mods\VMToolsOnline
