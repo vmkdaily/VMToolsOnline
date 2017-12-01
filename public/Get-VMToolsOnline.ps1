@@ -4,11 +4,11 @@ Function Get-VMToolsOnline {
   <#
       .SYNOPSIS
         Uses Powershell webcmdlets to connect to vmware.com and get a list of all
-        VMware Tools versions along with supporting information.
+        VMware Tools versions along with supporting infgormation.
 
       .DESCRIPTION
         Uses Powershell webcmdlets to connect to vmware.com and get a list of all
-        VMware Tools versions along with supporting information.  Also includes
+        VMware Tools versions along with supporting infgormation.  Also includes
         a derived property for RSS showing if a given Tools version is affected.
 
         All version information is obtained live from the internet, while the RSS
@@ -27,7 +27,7 @@ Function Get-VMToolsOnline {
       Get-VMToolsOnline
 
       This example runs the script with no parameters.  By default you will get a
-      report of all available VMware Tools versions on your screen. We maintain the
+      report of all available VMware Tools versions on your screen. WE maintain the
       original formatting where possible.  To use the data as objects see the PassThru
       parameter in the next example.
 
@@ -82,6 +82,14 @@ Function Get-VMToolsOnline {
     
     $PatchListUri = $Uri
     $PatchListObj = Invoke-WebRequest -Uri $PatchListUri
+    If($PatchListObj){
+      Write-Verbose -Message ('Using VMware Tools version list mapping from URI {0}' -f $PatchListUri)
+    }
+    Else{
+      Throw ('Problem getting information from URI {0}' -f $PatchListUri)
+    }
+    
+    #slice and dice
     $lineFeed = ($PatchListObj.Content -split "`n")
     $HeaderComments = $lineFeed -match "^#"
     $mainContent = $lineFeed  | Where-Object { $_ -notmatch "^#" }
@@ -138,13 +146,13 @@ Function Get-VMToolsOnline {
     )
     #endregion
     
-    $result = @()
+    $Script:result = @()
     foreach($line in $mainContent){
     
       #Create variables to hold line info
       [string]$StrToolsVersion = ($line -split ' ')[0]
       [string]$StrEsxVersion = ($line -split ' ')[1]
-      [string]$StrToolsRelease = ($line -split ' ')[2]
+      [System.Version]$VerToolsRelease = ($line -split ' ')[2]
         
       #Handle versions not yet bundled with ESX
       If($StrEsxVersion -match 'esx/0.0'){
@@ -164,8 +172,8 @@ Function Get-VMToolsOnline {
       
       #Future Tools
       <#
-          Handle RSS stance on future tools.The RSS Issue was resolved in
-          version 10282.  Treat future versions as not affected by returning
+          Handle RSS stance on future tools. The RSS Issue was resolved in
+          version 10282. Treat future versions as not affected by returning
           false for the RssAffectedTools property.
       #>
       [int]$RssResolvedVersion = '10282'
@@ -173,19 +181,19 @@ Function Get-VMToolsOnline {
       If($NumToolsVersion -gt $RssResolvedVersion ){
         [bool]$RssAffectedTools = $false
       }
-
+ 
       #Finally, create report object for this line entry
-      $LineObj = [ordered]@{
-        ToolsVersion      =  $StrToolsVersion
-        EsxVersion        =  $StrEsxVersion
-        ToolsRelease      =  $StrToolsRelease
-        EsxBuild          =  $StrEsxBuild
-        RssAffectedTools  =  $RssAffectedTools
+      $LineObj = [PSCustomObject]@{
+        ToolsVersion      =  [string]$StrToolsVersion
+        EsxVersion        =  [string]$StrEsxVersion
+        ToolsRelease      =  [System.Version]$VerToolsRelease
+        EsxBuild          =  [string]$StrEsxBuild
+        RssAffectedTools  =  [bool]$RssAffectedTools
       }
       
       #Validate one of the properties as a quick test, and then add to result object.
       If($LineObj.ToolsVersion){
-        $result += New-Object -TypeName PSObject -Property $LineObj
+        $Script:result += $LineObj
       }
       Else{
         Continue
@@ -213,7 +221,7 @@ Function Get-VMToolsOnline {
     }
     Else{
       #Handle default output. Returns text to screen. This is available in the DefaultSet parameter set
-      return $result | Format-Table -AutoSize
+      $result | Select-Object -Property ToolsVersion, EsxVersion, ToolsRelease, EsxBuild, RssAffectedTools | Format-Table -AutoSize
     }
   } #End End
 } #End Function
