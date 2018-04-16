@@ -138,8 +138,10 @@ PS C:\> Get-VMToolsOnline
 
 ToolsVersion EsxVersion  ToolsRelease EsxBuild   RssAffectedTools
 ------------ ----------  ------------ --------   ----------------
-10287        esx/0.0     10.1.15      NotBundled            False
-10282        esx/0.0     10.1.10      NotBundled            False
+10309        esx/0.0     10.2.5       NotBundled            False
+10304        esx/0.0     10.2.0       NotBundled            False
+10287        esx/6.5p02  10.1.15      7388607               False
+10282        esx/6.0p06  10.1.10      6921384               False
 10279        esx/6.5u1   10.1.7       5969303                True
 10277        esx/6.0p05  10.1.5       5572656                True
 10272        esx/6.5p01  10.1.0       5146846                True
