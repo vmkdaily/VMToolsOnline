@@ -134,12 +134,14 @@ NOTES
 #### Example Output
 
 ```
-PS C:\> Get-VMToolsOnline
+PS C:\> Get-VMToolsOnline -PassThru | ft -AutoSize
 
 ToolsVersion EsxVersion  ToolsRelease EsxBuild   RssAffectedTools
 ------------ ----------  ------------ --------   ----------------
+10336        esx/0.0     10.3.0       NotBundled            False
 10309        esx/0.0     10.2.5       NotBundled            False
-10304        esx/0.0     10.2.0       NotBundled            False
+10305        esx/6.5u2   10.2.1       8294253               False
+10304        esx/6.7     10.2.0       8169922               False
 10287        esx/6.5p02  10.1.15      7388607               False
 10282        esx/6.0p06  10.1.10      6921384               False
 10279        esx/6.5u1   10.1.7       5969303                True
@@ -252,5 +254,7 @@ ToolsVersion EsxVersion  ToolsRelease EsxBuild   RssAffectedTools
 7303         esx/3.5u4   7.4.7                              False
 7302         esx/3.5u3   7.4.6                              False
 7302         esx/3.5u2   7.4.6                              False
+
+PS C:\>
 
 ```
