@@ -13,7 +13,10 @@ If you want just the function, it is located in the `public` folder of the modul
 
 ## Changelog
 version 0.1.0   - Initial release
+<br>
+
 version 1.0.0.1 - Added handling for `Invoke-WebRequest` to `UseBasicParsing` by default when performing the lookup of versions available on vmware.com
+<br>
 
 ## help output
 
