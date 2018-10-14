@@ -2,12 +2,20 @@
 Download the module to the desired local directory and then import similar to:
 
 ```
-Import-Module c:\mods\VMToolsOnline
+Import-Module $HOME/Downloads/VMToolsOnline
+
 ```
 
 #### Included Function
-This module currently only includes one function, Get-VMToolsOnline.
-The following is the related help output.
+This module contains one function, `Get-VMToolsOnline`.
+The module structure is a convenience for those that prefer modules.
+If you want just the function, it is located in the `public` folder of the module.
+
+## Changelog
+version 0.1.0   - Initial release
+version 1.0.0.1 - Added handling for `Invoke-WebRequest` to `UseBasicParsing` by default when performing the lookup of versions available on vmware.com
+
+## help output
 
 ```
 NAME
@@ -138,8 +146,9 @@ PS C:\> Get-VMToolsOnline -PassThru | ft -AutoSize
 
 ToolsVersion EsxVersion  ToolsRelease EsxBuild   RssAffectedTools
 ------------ ----------  ------------ --------   ----------------
-10336        esx/0.0     10.3.0       NotBundled            False
-10309        esx/0.0     10.2.5       NotBundled            False
+10338        esx/0.0     10.3.2       NotBundled            False
+10309        esx/6.0p07  10.2.5       9239799               False
+10305        esx/6.7ep2a 10.2.1       9214924               False
 10305        esx/6.5u2   10.2.1       8294253               False
 10304        esx/6.7     10.2.0       8169922               False
 10287        esx/6.5p02  10.1.15      7388607               False
@@ -255,6 +264,8 @@ ToolsVersion EsxVersion  ToolsRelease EsxBuild   RssAffectedTools
 7302         esx/3.5u3   7.4.6                              False
 7302         esx/3.5u2   7.4.6                              False
 
+
 PS C:\>
+
 
 ```
