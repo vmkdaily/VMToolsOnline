@@ -149,8 +149,12 @@ PS C:\> Get-VMToolsOnline -PassThru | ft -AutoSize
 
 ToolsVersion EsxVersion  ToolsRelease EsxBuild   RssAffectedTools
 ------------ ----------  ------------ --------   ----------------
-10338        esx/0.0     10.3.2       NotBundled            False
+10341        esx/0.0     10.3.5       NotBundled            False
+10338        esx/6.7ep05 10.3.2       10764712              False
+10338        esx/6.7u1   10.3.2       10302608              False
+10309        esx/6.0ep19 10.2.5       10719132              False
 10309        esx/6.0p07  10.2.5       9239799               False
+10305        esx/6.5ep11 10.2.1       10719125              False
 10305        esx/6.7ep2a 10.2.1       9214924               False
 10305        esx/6.5u2   10.2.1       8294253               False
 10304        esx/6.7     10.2.0       8169922               False
@@ -267,11 +271,10 @@ ToolsVersion EsxVersion  ToolsRelease EsxBuild   RssAffectedTools
 7302         esx/3.5u3   7.4.6                              False
 7302         esx/3.5u2   7.4.6                              False
 
-
 PS C:\>
 
 ## Show the header by using -Raw or -IncludeHeader. The following shows a portion of the output.
-PS C:\> Get-VMToolsOnline -Raw
+PS C:\> Get-VMToolsOnline -Raw | more
 
 # VMware version-mapping file.
 #
@@ -289,13 +292,15 @@ PS C:\> Get-VMToolsOnline -Raw
 # Column 3: Tools version on guest Setup/About page
 # Column 4: ESXi server build number
 #
-10338       esx/0.0                                10.3.2
+10341       esx/0.0                                10.3.5
+10338       esx/6.7ep05                            10.3.2        10764712
+10338       esx/6.7u1                              10.3.2        10302608
+10309       esx/6.0ep19                            10.2.5        10719132
 10309       esx/6.0p07                             10.2.5        9239799
+10305       esx/6.5ep11                            10.2.1        10719125
 10305       esx/6.7ep2a                            10.2.1        9214924
 10305       esx/6.5u2                              10.2.1        8294253
 10304       esx/6.7                                10.2.0        8169922
-10287       esx/6.5p02                             10.1.15       7388607
-10282       esx/6.0p06                             10.1.10       6921384
 ...
 
 ```
