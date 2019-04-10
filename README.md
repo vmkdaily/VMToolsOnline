@@ -145,11 +145,12 @@ NOTES
 #### Example Output
 
 ```
-PS C:\> Get-VMToolsOnline -PassThru | ft -AutoSize
+PS C:\> Get-VMToolsOnline
 
 ToolsVersion EsxVersion  ToolsRelease EsxBuild   RssAffectedTools
 ------------ ----------  ------------ --------   ----------------
-10341        esx/0.0     10.3.5       NotBundled            False
+10346        esx/0.0     10.3.10      NotBundled            False
+10341        esx/6.5p03  10.3.5       10884925              False
 10338        esx/6.7ep05 10.3.2       10764712              False
 10338        esx/6.7u1   10.3.2       10302608              False
 10309        esx/6.0ep19 10.2.5       10719132              False
@@ -272,8 +273,11 @@ ToolsVersion EsxVersion  ToolsRelease EsxBuild   RssAffectedTools
 7302         esx/3.5u2   7.4.6                              False
 
 PS C:\>
+```
 
-## Show the header by using -Raw or -IncludeHeader. The following shows a portion of the output.
+## Show the header by using -Raw or -IncludeHeader.
+
+```
 PS C:\> Get-VMToolsOnline -Raw | more
 
 # VMware version-mapping file.
@@ -292,7 +296,9 @@ PS C:\> Get-VMToolsOnline -Raw | more
 # Column 3: Tools version on guest Setup/About page
 # Column 4: ESXi server build number
 #
-10341       esx/0.0                                10.3.5
+#
+10346       esx/0.0                                10.3.10
+10341       esx/6.5p03                             10.3.5        10884925
 10338       esx/6.7ep05                            10.3.2        10764712
 10338       esx/6.7u1                              10.3.2        10302608
 10309       esx/6.0ep19                            10.2.5        10719132
@@ -301,7 +307,9 @@ PS C:\> Get-VMToolsOnline -Raw | more
 10305       esx/6.7ep2a                            10.2.1        9214924
 10305       esx/6.5u2                              10.2.1        8294253
 10304       esx/6.7                                10.2.0        8169922
-...
+10287       esx/6.5p02                             10.1.15       7388607
+10282       esx/6.0p06                             10.1.10       6921384
+-- More  --
 
 ```
 
